@@ -28,4 +28,5 @@ export class ProveedorService{
           res.status(200).json(proveedor? {"Updated":true}: {"Updated":false});
         });
     }
+
 }
