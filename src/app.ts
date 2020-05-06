@@ -5,16 +5,19 @@ import {mainController} from "./controllers/main.controller";
 import mongoose from "mongoose";
 import {config} from "dotenv";
 import {resolve} from "path";
+import {Proveedorcontroller} from "./controllers/proveedor.controllers";
 config({path:resolve(__dirname,"../.env")});
 
  class App{
       public app:Application;
       public maincontroller :mainController;
+      public proveedorController :Proveedorcontroller;
       constructor(){
           this.app =express();
           this.setConfig();
           this.setmongodbconfig();
           this.maincontroller = new mainController(this.app);
+          this.proveedorController = new Proveedorcontroller(this.app);
 
       }
      private setConfig (){
