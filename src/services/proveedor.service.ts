@@ -28,5 +28,13 @@ export class ProveedorService{
           res.status(200).json(proveedor? {"Updated":true}: {"Updated":false});
         });
     }
-
+    public newprov(req:Request,res:Response){
+        const p = new Proveedor(req.body);
+        p.save((err:Error,proveedor:IProveedor)=>{
+            if(err){
+                res.status(401).send(err)
+            }
+            res.status(200).json(proveedor? {"successed":true,"Proveedor":proveedor}:{"successed":false});
+        });
+    } 
 }
