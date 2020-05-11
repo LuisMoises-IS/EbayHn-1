@@ -32,9 +32,9 @@ export class ProveedorService{
         const p = new Proveedor(req.body);
         p.save((err:Error,proveedor:IProveedor)=>{
             if(err){
-                res.status(401).send(err)
+                res.status(401).send(err);
             }
-            res.status(200).json(proveedor? {"successed":true,"Proveedor":proveedor}:{"successed":false});
-        });
-    } 
+            res.status(200).json(proveedor? {"successed":true,"Proveedor":proveedor}:{"successsed":false});
+        })
+    }
 }
