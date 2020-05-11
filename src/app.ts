@@ -6,18 +6,26 @@ import mongoose from "mongoose";
 import {config} from "dotenv";
 import {resolve} from "path";
 import {Proveedorcontroller} from "./controllers/proveedor.controllers";
+import {ProductoController} from "./controllers/producto.controller";
+import {CategoriaController} from "./controllers/categoria.controller";
 config({path:resolve(__dirname,"../.env")});
 
  class App{
       public app:Application;
       public maincontroller :mainController;
       public proveedorController :Proveedorcontroller;
+
+      public productoController :ProductoController;
+      public categoriaController :CategoriaController;
+
       constructor(){
           this.app =express();
           this.setConfig();
           this.setmongodbconfig();
           this.maincontroller = new mainController(this.app);
           this.proveedorController = new Proveedorcontroller(this.app);
+          this.productoController = new ProductoController(this.app);
+          this.categoriaController = new CategoriaController(this.app);
 
       }
      private setConfig (){

@@ -8,13 +8,15 @@ export class Proveedorcontroller{
         this.routes(); 
     }
     private routes(){
-        this.app.route("/proveedores").get(this.prov_service.getall);
+        this.app.route("/proveedores").get(this.prov_service.getAll);
+        this.app.route("/proveedores/productos").get(this.prov_service.getAllWProductos);
         
-       this.app.route("proveedor/:id").post(this.prov_service.newprov);
- 
-        this.app.route("/proveedor/:id")
+        this.app.route("/proveedor/:id").delete(this.prov_service.deleteOne);
+        this.app.route("/proveedor").post(this.prov_service.NewOne);
+        
+        /*this.app.route("/proveedor/:id")
         .get(this.prov_service.getid)
         .put(this.prov_service.actualizar);
-        
+        */
     }
 }
