@@ -9,6 +9,9 @@ export class Proveedorcontroller{
     }
     private routes(){
         this.app.route("/proveedores").get(this.prov_service.getall);
+        
+        this.app.route("/proveedor/:id").put(this.prov_service.newprov);
+         
         this.app.route("/proveedor/:id")
         .get(this.prov_service.getid)
         .put(this.prov_service.actualizar);
