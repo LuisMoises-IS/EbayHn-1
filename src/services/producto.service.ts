@@ -56,27 +56,7 @@ export class ProductoService extends ProductoHelpers{
                     as: "proveedor"
                     
                 }
-           }/*,{
-                $unwind: "$categoria"
-           },{
-                "$lookup":{
-                    from: "categorias",
-                    localField:"categoria",
-                    foreignField:"_id",
-                    as: "categoria"
-                }
-           },{
-                $unwind: "$proveedor"
-           }/*,{
-               $project:{
-                   name: 1,
-                   precio_venta : 1,
-                   precio_compra : 1,
-                   proveedor : "$proveedor.id",
-                   categoria : "$categoria.id", 
-
-               }
-           }*/
+           }
        ],(err:Error, data:any)=>{
             if(err){
                 console.log("entre en el bucle 1");
@@ -160,5 +140,5 @@ export class ProductoService extends ProductoHelpers{
            res.status(200).json({successed:false});
        }
    }
-
+//
 }
