@@ -11,7 +11,7 @@ export class CompradorController{
 
     private routes(){
         this.app.route("/compradores").get(this.comp_service.getAll);
-        this.app.route("compradores/:id").delete(this.comp_service.deleteOne);
+        this.app.route("compradoreliminado/:id").delete(this.comp_service.deleteOne);
         this.app.route("/comprador").post(this.comp_service.NewOne);
     }
 }

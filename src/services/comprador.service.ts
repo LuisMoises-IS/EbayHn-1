@@ -1,6 +1,6 @@
 import{Request,Response} from "express";
 
-import{ IComprador, Comprador } from "../Modelos/Comprador.modelos";
+import{ Comprador, IComprador } from "../Modelos/Comprador.modelos";
 
 import { MongooseDocument } from "mongoose";
 import { resolve } from "dns";
@@ -53,14 +53,16 @@ export class CompradorService extends CompradorHelpers{
 
 
     public async deleteOne(req: Request, res: Response){
-        const comp_service: CompradorService = new CompradorService();
-        const comprador: any = await comp_service.GetComprador({comprador: req.params.id});
+        //const comp_service: CompradorService = new CompradorService();
+       // const comprador: any = await comp_service.GetComprador({comprador: req.params.id});
+
+        console.log("Entro");
 
         Comprador.findByIdAndDelete(req.params.id,(err:Error)=>{
             if(err){
-                res.status(401).send({successed:false});
+                res.status(401).json({successed:false, message:"server got an error, contact support if this error is still happening"});
             }else{
-                res.status(200).json({successed:true});
+                res.status(200).json({successed:true,message:"User deleted successfully"});
             } 
         });
     }

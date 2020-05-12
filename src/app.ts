@@ -8,6 +8,8 @@ import {resolve} from "path";
 import {Proveedorcontroller} from "./controllers/proveedor.controllers";
 import {ProductoController} from "./controllers/producto.controller";
 import {CategoriaController} from "./controllers/categoria.controller";
+import {CompradorController} from "./controllers/comprador.controller";
+
 config({path:resolve(__dirname,"../.env")});
 
  class App{
@@ -18,6 +20,8 @@ config({path:resolve(__dirname,"../.env")});
       public productoController :ProductoController;
       public categoriaController :CategoriaController;
 
+      public compradorController : CompradorController;
+
       constructor(){
           this.app =express();
           this.setConfig();
@@ -26,6 +30,7 @@ config({path:resolve(__dirname,"../.env")});
           this.proveedorController = new Proveedorcontroller(this.app);
           this.productoController = new ProductoController(this.app);
           this.categoriaController = new CategoriaController(this.app);
+          this.compradorController = new CompradorController(this.app);
 
       }
      private setConfig (){
