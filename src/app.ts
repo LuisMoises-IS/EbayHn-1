@@ -9,6 +9,7 @@ import {Proveedorcontroller} from "./controllers/proveedor.controllers";
 import {ProductoController} from "./controllers/producto.controller";
 import {CategoriaController} from "./controllers/categoria.controller";
 import {CompradorController} from "./controllers/comprador.controller";
+import {CarritoController} from "./controllers/carrito.controller";
 
 config({path:resolve(__dirname,"../.env")});
 
@@ -21,6 +22,7 @@ config({path:resolve(__dirname,"../.env")});
       public categoriaController :CategoriaController;
 
       public compradorController : CompradorController;
+      public carritoController : CarritoController;
 
       constructor(){
           this.app =express();
@@ -31,6 +33,7 @@ config({path:resolve(__dirname,"../.env")});
           this.productoController = new ProductoController(this.app);
           this.categoriaController = new CategoriaController(this.app);
           this.compradorController = new CompradorController(this.app);
+          this.carritoController = new CarritoController(this.app);
 
       }
      private setConfig (){

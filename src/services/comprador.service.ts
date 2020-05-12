@@ -1,6 +1,7 @@
 import{Request,Response} from "express";
 
 import{ Comprador, IComprador } from "../Modelos/Comprador.modelos";
+import {CarritoService} from "../services/carrito.service";
 
 import { MongooseDocument } from "mongoose";
 import { resolve } from "dns";
@@ -30,6 +31,23 @@ export class CompradorService extends CompradorHelpers{
                 res.status(200).json(compradores);
             }
         });
+    }
+
+    public getAllWCarrito(req:Request, res: Response){
+        Comprador.aggregate([{
+            "$lookup":{
+                from: "carritos",
+                localField:"_id",
+                foreignField:"comprador",
+                as: "1"
+            }
+        }],(err:Error,data:any)=>{
+            if(err){
+                res.status(401).send(err);
+            }else{
+                res.status(200).json(data);
+            }
+        })
     }
 
     public async NewOne(req: Request, res: Response){
